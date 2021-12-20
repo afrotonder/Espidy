@@ -1,0 +1,7 @@
+{
+  "name": "espidy",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
