@@ -14,22 +14,21 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <!-- <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
-    <ion-card class="speedometer" (click)="test()">
-       <p class="speed">
-        <!-- <p> -->
-          <!-- {{this.currentSpeed | number:'1.1-2'}} -->
-          {{ currentSpeed | number:'1.1-2' }} mph
+  <ion-item>
+    <ion-label>Unit</ion-label>
+    <ion-select interface="popover" >
+      <ion-item *ngFor="let item of unitList" >
+        <ion-select-option value="{{item}}"  (click)="changeUnits(item)" >{{item}}</ion-select-option>
 
-        <!-- </p> -->
+      </ion-item>
+    </ion-select>
+  </ion-item>
+  <div id="container">
+    <ion-card class="speedometer">
+       <p class="speed">
+          {{ currentSpeed | number:'1.1-2' }} {{selectedUnit}}
       </p>
     </ion-card>
-    <!-- <ion-item>
-      <ion-button id="test">
-        Toggle Speed
-      </ion-button>
-    </ion-item> -->
+
   </div>
 </ion-content>
