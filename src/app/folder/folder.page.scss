@@ -9,6 +9,7 @@ ion-menu-button {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  height: 60%;
 }
 
 #container strong {
@@ -16,13 +17,24 @@ ion-menu-button {
   line-height: 26px;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  color: #8c8c8c;
-  margin: 0;
-}
+// #container p {
+//   font-size: 16px;
+//   line-height: 22px;
+//   color: #8c8c8c;
+//   margin: 0;
+// }
 
 #container a {
   text-decoration: none;
+}
+
+.speedometer {
+  height: 60%;
+  background-color: gray;
+}
+
+.speed {
+  color: white;
+  font-size: 60px; // 120px;
+  margin: 45px;
 }

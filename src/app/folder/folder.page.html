@@ -15,7 +15,21 @@
   </ion-header>
 
   <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <!-- <strong class="capitalize">{{ folder }}</strong>
+    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
+    <ion-card class="speedometer" (click)="test()">
+       <p class="speed">
+        <!-- <p> -->
+          <!-- {{this.currentSpeed | number:'1.1-2'}} -->
+          {{ currentSpeed | number:'1.1-2' }} mph
+
+        <!-- </p> -->
+      </p>
+    </ion-card>
+    <!-- <ion-item>
+      <ion-button id="test">
+        Toggle Speed
+      </ion-button>
+    </ion-item> -->
   </div>
 </ion-content>
