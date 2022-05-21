@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Motion } from '@capacitor/motion';
 import { PluginListenerHandle } from '@capacitor/core';
 import { DeviceMotion, DeviceMotionAccelerationData } from '@awesome-cordova-plugins/device-motion/ngx';
+import { Pedometer } from '@awesome-cordova-plugins/pedometer/ngx';
 
 @Component({
   selector: 'app-folder',
@@ -13,6 +14,8 @@ import { DeviceMotion, DeviceMotionAccelerationData } from '@awesome-cordova-plu
 export class FolderPage implements OnInit {
   public folder: string;
   currentSpeed: any;
+  currentDist: any;
+  distUnit: string ;
   getSpeed: boolean;
   unitList: Array<string>;
   selectedUnit: string;
@@ -20,11 +23,31 @@ export class FolderPage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private zone: NgZone,
-    private deviceMotion: DeviceMotion) {
+    private deviceMotion: DeviceMotion,
+    private pd: Pedometer
+  ) {
     this.currentSpeed = '0.0';
+    this.currentDist = '0.0';
+    this.distUnit = 'miles'
     this.getSpeed = false
     this.unitList = ['mph', 'm/s']
     this.selectedUnit = this.unitList[0]
+
+    Pedometer.isDistanceAvailable()
+  .then((available: boolean) => {
+    console.log('DIMELOOOOOOOOOOOOOOO');
+    console.log(available)
+  })
+  .catch((error: any) => {
+    console.log('NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO ');
+    console.log(error)
+  });
+
+Pedometer.startPedometerUpdates()
+   .subscribe((data: IPedometerData) => {
+     this.currentDist = data ;
+     console.log('pedometer data ', data);
+   });
 
   }
 
@@ -37,7 +60,7 @@ export class FolderPage implements OnInit {
   ngAfterViewInit() {
 
     // check if any address is set
-    this.initEspidy()
+    // this.initEspidy()
 
   }
 
